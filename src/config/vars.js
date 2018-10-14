@@ -9,6 +9,9 @@ require('dotenv-safe').load({
 module.exports = {
   env: process.env.NODE_ENV,
   port: process.env.PORT,
+  pg:{
+    uri:process.env.PG_URI
+  },
   jwtSecret: process.env.JWT_SECRET,
   jwtExpirationInterval: process.env.JWT_EXPIRATION_MINUTES,
   mongo: {

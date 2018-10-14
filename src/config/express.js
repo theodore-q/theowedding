@@ -7,6 +7,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const passport = require('passport');
 const routes = require('../api/routes/v1');
+const mainIndex = require('../api/routes/website');
 const { logs } = require('./vars');
 const strategies = require('./passport');
 const error = require('../api/middlewares/error');
@@ -46,6 +47,7 @@ passport.use('google', strategies.google);
 // mount api v1 routes
 app.use('/v1', routes);
 
+app.use('/',mainIndex);
 // if error is not an instanceOf APIError, convert it.
 app.use(error.converter);
 
