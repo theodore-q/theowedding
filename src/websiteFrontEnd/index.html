@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<title>Welcome to our wedding</title>
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="css/style.css" rel="stylesheet">
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+<div class='loading-screen'>
+        <div class="lds-heart red"><div></div></div>
+</div>
+<div class='main-content'>
+	<div class='banner'>
+		<div>
+			<canvas id="canvas">
+			</canvas>
+		</div>
+
+
+		<div id="mask">
+		</div>
+
+
+		<div class='invite' id="title-text">
+			<div class='text-box'>
+			</div>
+		</div>
+	</div>
+
+
+	<div class='main-web-body'>
+		<h1>It’s been four great years since we first met,</h1>
+
+
+		<div class='poem'>
+			<p>And amazing times came ahead.<br>
+			On Mount Etna, as the sun set,<br>
+			We were joyously engaged to be wed.<br></p>
+
+
+			<p>We’re delighted to say, <b>20 July</b> is the day.<br>
+			We hope to see you all there<br>
+			At <b>twelve mid-day</b>, our I do’s we shall say,<br>
+			We’ll be a happily married pair.<br></p>
+
+
+			<p>At <b>Islington, London in Union Chapel</b>,<br>
+			Sunshine and love will be spreading.<br>
+			And we just can not wait, till we all celebrate<br>
+			Our Glorious Midsummer Wedding!<br></p>
+
+
+			<p><i>Love,<br>
+			Rhema and Theo</i>
+			</p>
+		</div>
+
+		<hr>
+
+
+		<h2>We are looking forward to seeing you there.</h2>
+
+
+        <p>Please RSVP here and we would be grateful if you could fill in the details below, as it would really help us organise things in the lead up to the big day!</p>
+        
+
+        <form>
+
+            <div class="group">
+                <input id="name" name="name" required="" type="text"> <span class="highlight"></span> <span class="bar"></span> <label for="name">Full Name</label>
+            </div>
+
+
+            <div class="group">
+                <input id="email" name="email" required="" type="text"> <span class="highlight"></span> <span class="bar"></span> <label for="email">Email</label>
+            </div>
+
+
+            <div class='radio-group'>
+                <div class='radio-container'>
+                    <div>
+                        <input id='present' name="availability" required="" type="radio" value="I will be there"><label for="present">I will be there</label>
+                    </div>
+
+
+                    <div>
+                        <input id='not-sure' name="availability" type="radio" value="I'm not sure I can make it"><label for="not-sure">I'm not sure I can make it</label>
+                    </div>
+
+
+                    <div>
+                        <input id='not-make' name="availability" type="radio" value="I can't make it"><label for="not-make">I can't make it</label>
+                    </div>
+                    <label for="not-make"></label>
+                </div>
+            </div>
+
+
+            <div class="group">
+                <input id="guests" name="guests" required="" type="text"> <span class="highlight"></span> <span class="bar"></span> <label for="guests">Number of guests</label>
+            </div>
+
+
+            <div class="group">
+                <input id="questions" name="questions" required="" type="text"> <span class="highlight"></span> <span class="bar"></span> <label for="questions">Do you have any questions?</label>
+            </div>
+
+            <div class="group">
+                <input id="password" name="password" required="" type="text"> <span class="highlight"></span> <span class="bar"></span> <label for="password">Whats the password?🙊</label><br>
+            </div>
+
+
+            <div class='submit'>
+                Let us know
+            </div>
+            <script>
+                $('.submit').click(function(e){
+                    formData = $('form input[type=text]').map(function(){
+                        return {
+                            id:this.id,
+                            value:this.value
+                        }
+                    })
+
+                    radioButton = $('form input[type=radio]:checked')
+                    
+                    formData.push({
+                        value:radioButton.val(),
+                        id:'coming_status'
+                    })
+
+                    var result = formData.toArray().reduce(function(map, obj) {
+                        map[obj.id] = obj.value;
+                        return map;
+                    }, {});
+                  
+
+                    $(e.target).html('<div class="lds-heart"><div></div></div>');
+
+                    $.ajax({
+                        url: '/v1/saveTheDate/register',
+                        type: 'post',
+                        data:JSON.stringify(result),
+                        dataType: 'json',
+                        success: function (data) {
+                            setTimeout(function(){ 
+                                $(e.target).html('Submitted');
+                                $('.group').fadeOut();
+                                $('.radio-group').fadeOut();
+                               
+
+                                $( e.target).unbind();
+                            }, 1000);
+                        },
+                        contentType: 'application/json',
+                        
+
+                        
+                    });
+
+                    console.log(formData);
+
+                });
+                
+            
+            </script>
+                        
+        </form>
+
+
+		<div class='more-info'>
+			<p>Watch this space as we will be updating you with more information shortly.</p>
+
+
+			<p>#theogetsrhemantic #londoneitright2019</p>
+		</div>
+
+
+		<div class='monogram'>
+		</div>
+    </div>
+</div>
+	<script src="js/index.js">
+	</script>
+</body>
+</html>

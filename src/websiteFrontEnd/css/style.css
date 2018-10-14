@@ -1,0 +1,311 @@
+@import url("https://fonts.googleapis.com/css?family=Great+Vibes|Libre+Baskerville");
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow-x: hidden;
+  font-family: "Libre Baskerville", serif;
+}
+body h1,
+body h2 {
+  font-family: "great vibes", cursive;
+  font-weight: 400;
+  color: #c30505;
+}
+body .poem p {
+  font-size: 0.9em;
+}
+body .poem i {
+  color: #c30505;
+  font-size: 1.2em;
+}
+body p {
+  color: #2e2e2f;
+  font-size: 0.9em;
+  line-height: 1.58;
+  letter-spacing: -0.003em;
+}
+
+#canvas {
+  z-index: 0;
+  height: 100vh;
+}
+
+#mask {
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0) 75%, black 100%);
+  background-size: cover;
+}
+
+.banner {
+  height: 100vh;
+  display: block;
+  overflow: hidden;
+  background:white;
+}
+
+#title-text {
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  background: url("https://image.ibb.co/bKkUxU/flower_garland.png");
+  -webkit-filter: drop-shadow(2px 2px 2px #222);
+  filter: drop-shadow(2px 2px 3px #222);
+  background: url("https://image.ibb.co/hd5gOe/flower_garland_with_us.png");
+  top: 0;
+  display: flex;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 600px;
+  color: black;
+  font-size: 40px;
+  transform: rotate(0.1deg);
+}
+@media only screen and (min-width: 600px) {
+  #title-text {
+    background-size: auto;
+  }
+}
+
+.main-web-body {
+  background: white;
+  font-size: 20px;
+  max-width: 740px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.monogram {
+  background: url("https://image.ibb.co/iX8arz/bottom_boquet.png");
+  width: 100%;
+  height: 150px;
+  margin: 80px 0px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+label {
+  display: inline-block;
+}
+
+.radio-group {
+  font-size: 18px;
+  position: relative;
+  margin-bottom: 10px;
+  margin-top: 35px;
+}
+.radio-group div {
+  margin-top: 6px;
+}
+.radio-group label {
+  margin-left: 10px;
+  color: #999;
+}
+.radio-group input:focus ~ label {
+  color: #5264ae;
+}
+
+.group {
+  position: relative;
+  margin-bottom: 10px;
+  margin-top: 35px;
+  /* LABEL ======================================= */
+  /* active state */
+  /* BOTTOM BARS ================================= */
+  /* active state */
+  /* HIGHLIGHTER ================================== */
+}
+.group input {
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 300px;
+  border: none;
+  border-bottom: 1px solid #757575;
+}
+.group input:focus {
+  outline: none;
+}
+.group label {
+  color: #999;
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+.group input:focus ~ label,
+.group input:valid ~ label {
+  top: -20px;
+  font-size: 14px;
+  color: #5264ae;
+}
+.group .bar {
+  position: relative;
+  display: block;
+  width: 300px;
+}
+.group .bar:before,
+.group .bar:after {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #5264ae;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+.group .bar:before {
+  left: 50%;
+}
+.group .bar:after {
+  right: 50%;
+}
+.group input:focus ~ .bar:before,
+.group input:focus ~ .bar:after {
+  width: 50%;
+}
+.group .highlight {
+  position: absolute;
+  height: 60%;
+  width: 100px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.more-info {
+  display: inline-block;
+}
+
+.submit {
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  padding: 10px 40px;
+  margin: 0px 10px 10px 0px;
+  float: left;
+  border-radius: 10px;
+  font-family: "great vibes", cursive;
+  font-size: 45px;
+  color: #fff;
+  text-decoration: none;
+  background-color: #82bf56;
+  border-bottom: 5px solid #669644;
+  text-shadow: 0px -2px #669644;
+  cursor: pointer;
+}
+.submit:hover {
+  background-color: #7db554;
+}
+.submit:active {
+  transform: translate(0px, 5px);
+  -webkit-transform: translate(0px, 5px);
+  border-bottom: 5px solid;
+}
+
+
+.main-content{
+  display:none;
+}
+
+
+.lds-heart {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+  transform: rotate(45deg);
+  transform-origin: 32px 32px;
+}
+.lds-heart div {
+  top: 23px;
+  left: 19px;
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  background: #fff;
+  animation: lds-heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.lds-heart div:after,
+.lds-heart div:before {
+  content: " ";
+  position: absolute;
+  display: block;
+  width: 26px;
+  height: 26px;
+  background: #fff;
+}
+.lds-heart.red div,
+.lds-heart.red div:after,
+.lds-heart.red div:before{
+  background: red;
+}
+
+.loading-screen {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lds-heart div:before {
+  left: -17px;
+  border-radius: 50% 0 0 50%;
+}
+.lds-heart div:after {
+  top: -17px;
+  border-radius: 50% 50% 0 0;
+}
+@keyframes lds-heart {
+  0% {
+    transform: scale(0.95);
+  }
+  5% {
+    transform: scale(1.1);
+  }
+  39% {
+    transform: scale(0.85);
+  }
+  45% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}
