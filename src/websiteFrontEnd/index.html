@@ -141,7 +141,21 @@
                         map[obj.id] = obj.value;
                         return map;
                     }, {});
-                  
+
+                    function invalidPassword(){
+                        
+                        if(!$('.pwd-err')[0]){
+                            return $('.group #password').parent().append('<span class="pwd-err">please enter the password</span>')
+                        }
+                        return
+                    };
+
+                    if(!result.password){
+                        return invalidPassword();
+                    }
+                    if(result.password.substring(1,2) != 'e'){
+                        return invalidPassword();
+                    }
 
                     $(e.target).html('<div class="lds-heart"><div></div></div>');
 
@@ -165,9 +179,6 @@
 
                         
                     });
-
-                    console.log(formData);
-
                 });
                 
             
