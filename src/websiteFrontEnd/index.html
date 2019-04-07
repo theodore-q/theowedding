@@ -83,8 +83,12 @@
                 <input id="email" name="email" required="" type="text"> <span class="highlight"></span> <span class="bar"></span> <label for="email">Email</label>
             </div>
 
+            <div class="group">
+                <input id="coming_status" name="coming_status" required="" type="text"> <span class="highlight"></span> <span class="bar"></span> <label for="email">What events are you coming to?</label>
+            </div>
 
-            <div class='radio-group'>
+
+            <!-- <div class='radio-group'>
                 <div class='radio-container'>
                     <div>
                         <input id='present' name="availability" required="" type="radio" value="I will be there"><label for="present">I will be there</label>
@@ -101,7 +105,7 @@
                     </div>
                     <label for="not-make"></label>
                 </div>
-            </div>
+            </div> -->
 
 
             <div class="group">
@@ -109,8 +113,8 @@
             </div>
 
 
-            <div class="group">
-                <input id="questions" name="questions" required="" type="text"> <span class="highlight"></span> <span class="bar"></span> <label for="questions">Do you have any questions?</label>
+            <div class="group questions">
+                <input id="questions" name="questions" required="" type="text"> <span class="highlight"></span> <span class="bar"></span> <label for="questions">Do you have dietary requirements or further questions?</label>
             </div>
 
             <div class="group">
@@ -128,13 +132,6 @@
                             id:this.id,
                             value:this.value
                         }
-                    })
-
-                    radioButton = $('form input[type=radio]:checked')
-                    
-                    formData.push({
-                        value:radioButton.val(),
-                        id:'coming_status'
                     })
 
                     var result = formData.toArray().reduce(function(map, obj) {

@@ -86,9 +86,17 @@ body p {
   font-size: 40px;
   transform: rotate(0.1deg);
 }
+
+.group #questions{
+  height:4.5em;
+}
+
 @media only screen and (min-width: 600px) {
   #title-text {
     background-size: auto;
+  }
+  .group #questions{
+    height:2.5em;
   }
 }
 
